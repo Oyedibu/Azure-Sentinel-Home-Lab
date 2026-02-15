@@ -16,4 +16,13 @@ This lab aims to establish a cloud-native SIEM (Microsoft Sentinel) to monitor a
 1. **Infrastructure Deployment:** Provisioned a Log Analytics Workspace and enabled Microsoft Sentinel.
 2. **Hybrid Connection:** Onboarded a local Windows machine using Azure Arc to bridge the gap between on-premise hardware and cloud monitoring.
 3. **Telemetry Configuration:** Created Data Collection Rules (DCR) to stream Security Events into the SIEM.
-4. **Threat Detection:** (Coming Soon)
+4. ### Phase 2: Threat Detection & KQL Hunting
+* **Scenario:** Simulated an unauthorized local login attempt (Brute Force) on the Windows 11 endpoint.
+* **Detection:** Utilized Kusto Query Language (KQL) in Microsoft Sentinel to filter for Event ID 4625 (Failed Logon).
+* **KQL Query Used:**
+  SecurityEvent
+  | where EventID == 4625
+  | where Computer has "jayeola"
+  | project TimeGenerated, Computer, Account, IpAddress, LogonType
+
+* **Observation:** The SIEM successfully ingested telemetry via the Azure Monitor Agent (AMA), revealing four failed interactive logon attempts (Logon Type 2) from the local host.
