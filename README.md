@@ -30,5 +30,5 @@ This lab aims to establish a cloud-native SIEM (Microsoft Sentinel) to monitor a
 * **Automation:** Created a **Scheduled Analytics Rule** to monitor for brute-force patterns.
 * **Alert Logic:** Configured the rule to trigger an Incident when more than 2 failed attempts occur within a 5-minute window.
 * **Entity Mapping:** Mapped `Account`, `Host`, and `IPAddress` entities to enable deep-dive investigations.
-* **Incident Response:** Successfully triggered the alert by simulating 5 failed logins. Used the **Sentinel Investigation Graph** to visualize the relationship between the target host and the failed account.
+* **Incident Response:** Successfully triggered the alert by simulating failed logins. Used the **Sentinel Investigation Graph** to visualize the relationship between the target host and the failed account.
 * 
